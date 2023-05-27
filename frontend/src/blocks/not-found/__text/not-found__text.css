@@ -1,0 +1,11 @@
+.not-found__text {
+  color: lightblue;
+  font-size: 18px;
+  align-self: center;
+}
+
+@media screen and (max-width: 450px) {
+  .not-found__text {
+    font-size: 14px;
+  }
+}

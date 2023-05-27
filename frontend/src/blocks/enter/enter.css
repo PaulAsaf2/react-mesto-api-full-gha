@@ -1,0 +1,12 @@
+.enter {
+  margin: 60px auto 0 auto;
+  width: 358px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 500px) {
+  .enter {
+    width: 280px;
+    margin-top: 40px;
+  }
+}

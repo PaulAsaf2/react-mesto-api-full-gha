@@ -1,0 +1,15 @@
+.header__container {
+  align-self: center;
+  display: flex;
+  gap: 24px;
+}
+
+@media screen and (max-width: 500px) {
+  .header__container {
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid #545454;
+    border-top: 1px solid #545454;
+  }
+}

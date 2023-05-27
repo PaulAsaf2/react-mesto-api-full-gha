@@ -1,0 +1,19 @@
+.images {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 21px 17px;
+}
+
+@media screen and (max-width: 930px) {
+  .images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .images {
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+  }
+}

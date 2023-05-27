@@ -1,0 +1,26 @@
+.enter__submit {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+  background-color: white;
+  margin-top: 159px;
+  height: 50px;
+  border: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: 0.4s ease;
+}
+
+.enter__submit:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+@media screen and (max-width: 500px) {
+  .enter__submit {
+    height: 46px;
+    margin-top: 105px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+}

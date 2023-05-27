@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 880px;
+  margin: auto;
+}
+
+@media screen and (max-width: 930px) {
+  .container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .container {
+    padding-right: 19px;
+    padding-left: 19px;
+  }
+}

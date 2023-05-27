@@ -1,0 +1,11 @@
+.enter__input {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  margin: 0;
+  border: 0;
+  color: white;
+  background-color: black;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #CCC;
+}
