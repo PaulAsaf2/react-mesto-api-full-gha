@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const process = require('process');
 const rateLimit = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const { mongoDBPath } = require('./utils/constants');
 const routerUser = require('./routes/users');
 const routerCard = require('./routes/cards');
@@ -24,6 +25,7 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
+app.use(cors());
 app.use(limiter);
 app.use(cookieParser());
 
