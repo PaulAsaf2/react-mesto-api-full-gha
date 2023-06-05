@@ -8,8 +8,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.11.161
 
-Frontend https://...
+Frontend http://image.nomoredomains.rocks/
 
 Backend https://...
