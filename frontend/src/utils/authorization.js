@@ -25,15 +25,9 @@ export function authorize(email, password) {
     body: JSON.stringify({ email, password })
   })
     .then(checkResponse)
-  // .then((data) => {
-  //   if (data.token) {
-  //     localStorage.setItem('token', data.token);
-  //     return data;
-  //   }
-  // })
 }
 
-export function getContent(token) {
+export function authStatus(token) {
   return fetch(`${baseUrl}/auth-status`, {
     method: 'GET',
     credentials: 'include',

@@ -94,10 +94,10 @@ function App() {
       };
     }
   }, [isOpen]);
-  
+
   // Автом. вход в уч. запись через куки
   useEffect(() => {
-    auth.getContent()
+    auth.authStatus()
       .then((data) => {
         if (data.isAuthenticated) {
           getMainData();
@@ -129,11 +129,9 @@ function App() {
   function handleLogin(email, password) {
     auth.authorize(email, password)
       .then((data) => {
-        // console.log(data.logged);
         if (data.logged) {
           getMainData();
           setLoggedIn(true);
-          setEmail(email);
           navigate('/main', { replace: true });
         }
       })
@@ -157,6 +155,7 @@ function App() {
     Promise.all([api.getProfileData(), api.getInitialCards()])
       .then(([userData, cards]) => {
         setCurrentUser(userData);
+        setEmail(userData.email);
         setCards(cards);
       })
       .catch((err) => console.log(err));
