@@ -27,14 +27,6 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use('/auth-status', (req, res) => {
-//   if (req.cookies.jwt) {
-//     res.send({ isAuthenticated: true });
-//   } else {
-//     res.send({ isAuthenticated: false });
-//   }
-// });
-
 app.use('/', routerEnter);
 
 app.use('/users', auth, routerUser);
