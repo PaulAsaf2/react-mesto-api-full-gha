@@ -94,22 +94,18 @@ function App() {
       };
     }
   }, [isOpen]);
-  // ------------------------------
-  // сверка токена при входе
+  
+  // Автом. вход в уч. запись через куки
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      auth.getContent(token)
-        .then((res) => {
-          if (res) {
-            getMainData();
-            setEmail(res.data.email)
-            setLoggedIn(true);
-            navigate('/main', { replace: true })
-          }
-        })
-        .catch(err => console.log(err));
-    }
+    auth.getContent()
+      .then((data) => {
+        if (data.isAuthenticated) {
+          getMainData();
+          setLoggedIn(true);
+          navigate('/main', { replace: true })
+        }
+      })
+      .catch(err => console.log(err));
   }, [])
 
   // Регистрация уч. записи
@@ -133,7 +129,8 @@ function App() {
   function handleLogin(email, password) {
     auth.authorize(email, password)
       .then((data) => {
-        if (data.token) {
+        // console.log(data.logged);
+        if (data.logged) {
           getMainData();
           setLoggedIn(true);
           setEmail(email);

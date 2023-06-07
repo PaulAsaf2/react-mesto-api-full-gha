@@ -20,25 +20,24 @@ export function register(email, password) {
 export function authorize(email, password) {
   return fetch(`${baseUrl}/signin`, {
     method: 'POST',
+    credentials: 'include',
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ password, email })
+    body: JSON.stringify({ email, password })
   })
     .then(checkResponse)
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        return data;
-      }
-    })
+  // .then((data) => {
+  //   if (data.token) {
+  //     localStorage.setItem('token', data.token);
+  //     return data;
+  //   }
+  // })
 }
 
 export function getContent(token) {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${baseUrl}/auth-status`, {
     method: 'GET',
-    headers: {
-      "Content-Type": "application/json",
-      // "Authorization": `Bearer ${token}`
-    }
+    credentials: 'include',
+    headers: { "Content-Type": "application/json" }
   })
     .then(checkResponse)
 }

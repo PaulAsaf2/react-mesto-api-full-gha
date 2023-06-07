@@ -7,7 +7,9 @@ const process = require('process');
 const rateLimit = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const { mongoDBPath } = require('./utils/constants');
+const {
+  mongoDBPath, corsOptions, limiterOptions,
+} = require('./utils/constants');
 const routerUser = require('./routes/users');
 const routerCard = require('./routes/cards');
 const routerEnter = require('./routes/enter');
@@ -17,22 +19,21 @@ const NotFoundError = require('./errors/notFound');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  standartHeaders: true,
-  legacyHeaders: false,
-});
-
-app.use(cors());
-app.use(limiter);
-app.use(cookieParser());
-
 mongoose.connect(mongoDBPath);
 
+app.use(cors(corsOptions));
+app.use(rateLimit(limiterOptions));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/auth-status', (req, res) => {
+  if (req.cookies.jwt) {
+    res.send({ isAuthenticated: true });
+  } else {
+    res.send({ isAuthenticated: false });
+  }
+});
 
 app.use('/', routerEnter);
 

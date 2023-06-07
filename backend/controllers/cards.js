@@ -48,6 +48,7 @@ const putLike = (req, res, next) => {
     { $addToSet: { likes: req.user._id } },
     { new: true },
   )
+    .populate(['likes', 'owner'])
     .then((card) => {
       if (!card) {
         return next(new NotFoundError('Передан несуществующий _id карточки'));
@@ -70,6 +71,7 @@ const deleteLike = (req, res, next) => {
     { $pull: { likes: req.user._id } },
     { new: true },
   )
+    .populate(['likes', 'owner'])
     .then((card) => {
       if (!card) {
         return next(new NotFoundError('Передан несуществующий _id карточки'));

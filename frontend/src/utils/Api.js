@@ -22,6 +22,7 @@ class Api {
   // получает данные профиля
   getProfileData() {
     return this._request(`${this._baseUrl}/users/me`, {
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -30,6 +31,7 @@ class Api {
   setProfileData(data) {
     return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify(data),
     });
@@ -41,6 +43,7 @@ class Api {
   setAvatar(link) {
     return this._request(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify(link),
     });
@@ -51,6 +54,7 @@ class Api {
   // получает данные карточек
   getInitialCards() {
     return this._request(`${this._baseUrl}/cards`, {
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -59,6 +63,7 @@ class Api {
   createCard(data) {
     return this._request(`${this._baseUrl}/cards`, {
       method: "POST",
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify(data),
     });
@@ -68,6 +73,7 @@ class Api {
   deleteCard(id) {
     return this._request(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -78,11 +84,13 @@ class Api {
     if (isLiked) {
       return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: "PUT",
+        credentials: 'include',
         headers: this._headers,
       });
     } else {
       return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: "DELETE",
+        credentials: 'include',
         headers: this._headers,
       });
     }
