@@ -10,6 +10,6 @@
 
 IP-адрес 158.160.11.161
 
-Frontend http://image.nomoredomains.rocks/
+Frontend http://image.nomoredomains.rocks
 
-Backend https://...
+Backend http://image.api.nomoredomains.rocks
