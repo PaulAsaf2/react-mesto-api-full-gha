@@ -145,7 +145,7 @@ function App() {
 
   // выход из уч. записи
   function signOut() {
-    localStorage.removeItem('token');
+    auth.logout();
     setLoggedIn(false);
     navigate('/sign-in', { replace: true });
   }

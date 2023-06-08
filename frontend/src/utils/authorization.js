@@ -27,8 +27,17 @@ export function authorize(email, password) {
     .then(checkResponse)
 }
 
-export function authStatus(token) {
+export function authStatus() {
   return fetch(`${baseUrl}/auth-status`, {
+    method: 'GET',
+    credentials: 'include',
+    headers: { "Content-Type": "application/json" }
+  })
+    .then(checkResponse)
+}
+
+export function logout() {
+  return fetch(`${baseUrl}/logout`, {
     method: 'GET',
     credentials: 'include',
     headers: { "Content-Type": "application/json" }

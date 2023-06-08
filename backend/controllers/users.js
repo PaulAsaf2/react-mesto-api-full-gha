@@ -98,6 +98,11 @@ const cookieEntry = (req, res) => {
   }
 };
 // --------------------------------------------------------
+const logout = (req, res) => {
+  res.clearCookie('jwt');
+  res.end();
+};
+// --------------------------------------------------------
 const updateUser = (req, res, next) => {
   const { name, about } = req.body;
 
@@ -161,4 +166,5 @@ module.exports = {
   updateAvatar,
   login,
   cookieEntry,
+  logout,
 };

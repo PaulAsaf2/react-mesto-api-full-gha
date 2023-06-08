@@ -5,6 +5,7 @@ const BadRequest = require('../errors/badRequest');
 // --------------------------------------------------------
 const getCards = (req, res, next) => {
   Card.find({})
+    .populate(['likes', 'owner'])
     .then((cards) => res.send(cards))
     .catch(next);
 };
@@ -14,6 +15,7 @@ const createCard = (req, res, next) => {
   const owner = req.user._id;
 
   Card.create({ name, link, owner })
+    .populate(['likes', 'owner'])
     .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
