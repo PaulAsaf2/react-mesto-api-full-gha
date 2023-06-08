@@ -11,6 +11,5 @@
     "rules": {
       "no-underscore-dangle": ["error", { "allow": ["_id"] }],
       "max-len": ["error", { "ignoreTrailingComments": true }],
-      "linebreak-style": ["error", "windows"]
     }
 }
