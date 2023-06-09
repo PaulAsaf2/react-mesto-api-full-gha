@@ -21,6 +21,8 @@ const { PORT = 3000 } = process.env;
 const app = express();
 mongoose.connect(mongoDBPath);
 
+
+
 app.use(cors(corsOptions));
 app.use(rateLimit(limiterOptions));
 app.use(cookieParser());
