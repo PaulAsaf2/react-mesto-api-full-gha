@@ -33,7 +33,7 @@ function Main(props) {
           <p className="profile__activity"> {user.about} </p>
           <button
             onClick={props.onAddPlace}
-            className="profile__add"
+            className="profile__addPlace"
             type="button"
           ></button>
         </section>

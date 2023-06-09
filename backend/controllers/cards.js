@@ -1,4 +1,5 @@
 const Card = require('../models/card');
+const User = require('../models/user');
 const Forbidden = require('../errors/forbidden');
 const NotFoundError = require('../errors/notFound');
 const BadRequest = require('../errors/badRequest');
@@ -15,8 +16,13 @@ const createCard = (req, res, next) => {
   const owner = req.user._id;
 
   Card.create({ name, link, owner })
-    .populate(['likes', 'owner'])
-    .then((card) => res.send(card))
+    .then((card) => {
+      const cardId = card._id.toString();
+      Card.findById(cardId)
+        .populate('owner')
+        .then((card) => res.send(card))
+        .catch(next);
+    })
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(
@@ -28,6 +34,7 @@ const createCard = (req, res, next) => {
 };
 // --------------------------------------------------------
 const deleteCard = (req, res, next) => {
+  console.log(req.params.id);
   Card.findById(req.params.id)
     .then((card) => {
       if (!card) {

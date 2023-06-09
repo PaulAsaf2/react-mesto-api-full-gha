@@ -29,7 +29,7 @@
 @import url(./blocks/profile/__name/profile__name.css);
 @import url(./blocks/profile/__edit/profile__edit.css);
 @import url(./blocks/profile/__activity/profile__activity.css);
-@import url(./blocks/profile/__add/profile__add.css);
+@import url(./blocks/profile/__add/profile__addPlace.css);
 
 /* images---images---images---images---images---images---images---images */
 @import url(./blocks/images/images.css);

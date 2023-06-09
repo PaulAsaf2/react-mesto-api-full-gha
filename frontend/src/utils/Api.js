@@ -98,6 +98,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'http://image.api.nomoredomains.rocks',
+  baseUrl: 'http://localhost:3000',
+  // baseUrl: 'http://image.api.nomoredomains.rocks',
   headers: { "Content-Type": "application/json" },
 });
