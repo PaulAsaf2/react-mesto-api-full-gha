@@ -44,6 +44,7 @@ function App() {
     succes: 'Вы успешно зарегистрировались!',
     error: 'Что-то пошло не так! Попробуйте еще раз.',
   }
+
   // ------------------------------
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
