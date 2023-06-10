@@ -39,7 +39,7 @@ function Main(props) {
         </section>
 
         <section aria-label="Изображения пользователя" className="images">
-          {cards.map((item) => {
+          {cards.reverse().map((item) => {
             return (
               <Card
                 key={item._id}
