@@ -8,8 +8,6 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.11.161
-
+IP 158.160.11.161
 Frontend http://image.nomoredomains.rocks
-
 Backend http://image.api.nomoredomains.rocks
