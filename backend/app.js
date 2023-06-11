@@ -7,6 +7,7 @@ const process = require('process');
 const rateLimit = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const {
   mongoDBPath, corsOptions, limiterOptions,
 } = require('./utils/constants');
@@ -27,6 +28,8 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(requestLogger);
+
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
@@ -46,6 +49,7 @@ app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
 
+app.use(errorLogger);
 
 app.use(errors());
 app.use(handleError);
