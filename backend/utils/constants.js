@@ -9,7 +9,7 @@ module.exports.SERVER_ERROR = 500;
 module.exports.mongoDBPath = 'mongodb://127.0.0.1:27017/mestodb';
 
 module.exports.corsOptions = {
-  origin: ['http://image.nomoredomains.rocks', 'http://localhost:3001'],
+  origin: ['https://image.nomoredomains.rocks', 'http://localhost:3001'],
   credentials: true,
   maxAge: 3600,
 };

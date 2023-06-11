@@ -100,7 +100,6 @@ function App() {
   // Автом. вход в уч. запись через куки
   useEffect(() => {
     const logged = localStorage.getItem('LoginStatus');
-    console.log(logged);
         if (logged) {
           getMainData();
           setLoggedIn(true);

@@ -1,4 +1,4 @@
-export const baseUrl = 'http://image.api.nomoredomains.rocks'
+export const baseUrl = 'https://image.api.nomoredomains.rocks'
 // export const baseUrl = 'http://localhost:3000'
 
 function checkResponse(res) {

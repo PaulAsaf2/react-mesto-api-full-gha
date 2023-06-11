@@ -99,6 +99,6 @@ class Api {
 
 export const api = new Api({
   // baseUrl: 'http://localhost:3000',
-  baseUrl: 'http://image.api.nomoredomains.rocks',
+  baseUrl: 'https://image.api.nomoredomains.rocks',
   headers: { "Content-Type": "application/json" },
 });
