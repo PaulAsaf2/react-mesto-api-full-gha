@@ -6,6 +6,5 @@ const {
 
 router.post('/signup', signupValidation, createUser);
 router.post('/signin', signinValidation, login);
-// hello
 
 module.exports = router;
