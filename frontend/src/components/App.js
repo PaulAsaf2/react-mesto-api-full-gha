@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import "../index.css";
@@ -98,16 +99,13 @@ function App() {
   // ------------------------------
   // Автом. вход в уч. запись через куки
   useEffect(() => {
-    auth.authStatus()
-      .then((data) => {
-        if (data.isAuthenticated) {
+    const logged = localStorage.getItem('LoginStatus');
+    console.log(logged);
+        if (logged) {
           getMainData();
           setLoggedIn(true);
           navigate('/main', { replace: true })
         }
-      })
-      .catch(err => console.log(err));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Регистрация уч. записи
@@ -147,7 +145,7 @@ function App() {
 
   // выход из уч. записи
   function signOut() {
-    auth.logout();
+    localStorage.removeItem('LoginStatus')
     setLoggedIn(false);
     navigate('/sign-in', { replace: true });
   }

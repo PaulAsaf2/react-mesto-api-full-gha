@@ -12,7 +12,7 @@ export function register(email, password) {
   return fetch(`${baseUrl}/signup`, {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ password, email })
+    body: JSON.stringify({ email, password })
   })
     .then(checkResponse)
 }
@@ -25,22 +25,8 @@ export function authorize(email, password) {
     body: JSON.stringify({ email, password })
   })
     .then(checkResponse)
-}
-
-export function authStatus() {
-  return fetch(`${baseUrl}/auth-status`, {
-    method: 'GET',
-    credentials: 'include',
-    headers: { "Content-Type": "application/json" }
-  })
-    .then(checkResponse)
-}
-
-export function logout() {
-  return fetch(`${baseUrl}/logout`, {
-    method: 'GET',
-    credentials: 'include',
-    headers: { "Content-Type": "application/json" }
-  })
-    .then(checkResponse)
+    .then((data) => {
+      localStorage.setItem('LoginStatus', data.logged);
+      return data;
+    })
 }

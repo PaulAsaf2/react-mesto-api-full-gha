@@ -42,7 +42,10 @@ app.all('*', auth, (req, res, next) => next(
   new NotFoundError('Страницы не существует'),
 ));
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+});
+
 
 app.use(errors());
 app.use(handleError);

@@ -19,6 +19,5 @@ const auth = async (req, res, next) => {
 };
 
 module.exports = {
-  JWT_SECRET,
   auth,
 };

@@ -90,19 +90,6 @@ const login = (req, res, next) => {
     .catch(next);
 };
 // --------------------------------------------------------
-const cookieEntry = (req, res) => {
-  if (req.cookies.jwt) {
-    res.send({ isAuthenticated: true });
-  } else {
-    res.send({ isAuthenticated: false });
-  }
-};
-// --------------------------------------------------------
-const logout = (req, res) => {
-  res.clearCookie('jwt');
-  res.end();
-};
-// --------------------------------------------------------
 const updateUser = (req, res, next) => {
   const { name, about } = req.body;
 
@@ -165,6 +152,4 @@ module.exports = {
   updateUser,
   updateAvatar,
   login,
-  cookieEntry,
-  logout,
 };
