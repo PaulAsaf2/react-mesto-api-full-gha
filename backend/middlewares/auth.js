@@ -3,10 +3,9 @@ const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../errors/unauthorized');
 
 const auth = async (req, res, next) => {
-  const token = req.cookies.jwt;
   let payload;
-
   try {
+    const token = await req.cookies.jwt;
     payload = await jwt.verify(token, JWT_SECRET || 'dev-secret');
     req.user = payload;
   } catch {
