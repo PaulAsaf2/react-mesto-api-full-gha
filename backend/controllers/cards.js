@@ -1,5 +1,4 @@
 const Card = require('../models/card');
-const User = require('../models/user');
 const Forbidden = require('../errors/forbidden');
 const NotFoundError = require('../errors/notFound');
 const BadRequest = require('../errors/badRequest');
