@@ -110,12 +110,7 @@ const updateUser = (req, res, next) => {
       }
       res.send(user);
     })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        return next(new BadRequest('Некорректный id пользователя'));
-      }
-      return next(err);
-    });
+    .catch(next);
 };
 // --------------------------------------------------------
 const updateAvatar = (req, res, next) => {
@@ -137,12 +132,7 @@ const updateAvatar = (req, res, next) => {
       }
       return res.send(user);
     })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        return next(new BadRequest('Некорректный id пользователя'));
-      }
-      return next(err);
-    });
+    .catch(next);
 };
 // --------------------------------------------------------
 module.exports = {
