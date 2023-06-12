@@ -10,12 +10,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const {
   mongoDBPath, corsOptions, limiterOptions,
 } = require('../config');
-const routerUser = require('./routes/users');
-const routerCard = require('./routes/cards');
-const routerEnter = require('./routes/enter');
-const { auth } = require('./middlewares/auth');
+const router = require('./routes/index');
 const handleError = require('./errors/handleError');
-const NotFoundError = require('./errors/notFound');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -25,22 +21,10 @@ app.use(cors(corsOptions));
 app.use(rateLimit(limiterOptions));
 app.use(cookieParser());
 app.use(express.json());
+
 app.use(requestLogger);
 
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
-
-app.use('/', routerEnter);
-
-app.use('/users', auth, routerUser);
-app.use('/cards', auth, routerCard);
-
-app.all('*', auth, (req, res, next) => next(
-  new NotFoundError('Страницы не существует'),
-));
+app.use(router)
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
