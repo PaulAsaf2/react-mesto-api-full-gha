@@ -144,7 +144,7 @@ function App() {
 
   // выход из уч. записи
   function signOut() {
-    localStorage.removeItem('LoginStatus')
+    localStorage.removeItem('LoginStatus');
     setLoggedIn(false);
     navigate('/sign-in', { replace: true });
   }

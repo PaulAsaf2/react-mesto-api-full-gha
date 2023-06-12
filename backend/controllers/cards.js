@@ -34,7 +34,6 @@ const createCard = (req, res, next) => {
 };
 // --------------------------------------------------------
 const deleteCard = (req, res, next) => {
-  console.log(req.params.id);
   Card.findById(req.params.id)
     .then((card) => {
       if (!card) {
@@ -44,7 +43,7 @@ const deleteCard = (req, res, next) => {
         return next(new Forbidden('Нельзя удалить чужую карточку'));
       }
 
-      return Card.deleteOne({ _id: card._id })
+      card.deleteOne()
         .then(() => res.send({ message: 'Карточка удалена' }))
         .catch(next);
     })
