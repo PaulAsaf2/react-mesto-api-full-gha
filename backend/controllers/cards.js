@@ -2,6 +2,8 @@ const Card = require('../models/card');
 const Forbidden = require('../errors/forbidden');
 const NotFoundError = require('../errors/notFound');
 const BadRequest = require('../errors/badRequest');
+const { ValidationError } = require('mongoose').Error;
+const { CastError } = require('mongoose').Error;
 // --------------------------------------------------------
 const getCards = (req, res, next) => {
   Card.find({})
@@ -23,7 +25,7 @@ const createCard = (req, res, next) => {
         .catch(next);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err instanceof ValidationError) {
         return next(
           new BadRequest('Переданы некорректные данные при создании карточки'),
         );
@@ -86,7 +88,7 @@ const deleteLike = (req, res, next) => {
       return res.send(card);
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
+      if (err instanceof CastError) {
         return next(
           new BadRequest('Переданы некорректные данные для снятия лайка'),
         );
