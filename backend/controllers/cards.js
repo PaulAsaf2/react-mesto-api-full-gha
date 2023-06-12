@@ -7,6 +7,7 @@ const { CastError } = require('mongoose').Error;
 // --------------------------------------------------------
 const getCards = (req, res, next) => {
   Card.find({})
+    .sort({ createdAt: -1 })
     .populate(['likes', 'owner'])
     .then((cards) => res.send(cards))
     .catch(next);
