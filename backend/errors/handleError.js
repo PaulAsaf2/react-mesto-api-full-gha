@@ -1,4 +1,4 @@
-const { SERVER_ERROR } = require('../utils/constants');
+const { SERVER_ERROR } = require('../../config');
 
 const handleError = ((err, req, res, next) => {
   if (err.statusCode) {

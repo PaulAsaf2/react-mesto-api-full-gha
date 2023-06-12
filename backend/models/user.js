@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 const mongoose = require('mongoose');
-const { checkEmail, checkURL } = require('../utils/constants');
+const { checkEmail, checkURL } = require('../../config');
 
 const userSchema = new mongoose.Schema({
   email: {

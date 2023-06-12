@@ -9,7 +9,7 @@ const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const {
   mongoDBPath, corsOptions, limiterOptions,
-} = require('./utils/constants');
+} = require('../config');
 const routerUser = require('./routes/users');
 const routerCard = require('./routes/cards');
 const routerEnter = require('./routes/enter');
